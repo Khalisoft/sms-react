@@ -12,6 +12,7 @@ import Students from './components/students/Students';
 import Student from './components/students/Student';
 import AddStudent from './components/students/AddStudent';
 import EditStudent from './components/students/EditStudent';
+import NavigationBar from './components/NavigationBar';
 
 export default function Routes() {
   const supportsHistory = 'pushState' in window.history;
@@ -19,7 +20,7 @@ export default function Routes() {
   return (
     <Router forceRefresh={!supportsHistory}>
       <div>
-        {/* <Navbar /> */}
+        <NavigationBar />
 
         <div className="container">
           <Switch>
