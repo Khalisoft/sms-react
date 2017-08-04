@@ -7,12 +7,11 @@ import {
 } from 'react-router-dom';
 
 // components
-import App from './components/App';
 import Students from './components/students/Students';
 import Student from './components/students/Student';
 import AddStudent from './components/students/AddStudent';
 import EditStudent from './components/students/EditStudent';
-import NavigationBar from './components/NavigationBar';
+import NavigationBar from './components/common/NavigationBar';
 
 export default function Routes() {
   const supportsHistory = 'pushState' in window.history;
@@ -24,7 +23,7 @@ export default function Routes() {
 
         <div className="container">
           <Switch>
-            <Route exact path="/" component={App} />
+            <Route exact path="/" component={Students} />
 
             <Route exact path="/students" component={Students} />
             <Route path="/students/new" component={AddStudent} />
