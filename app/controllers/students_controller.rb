@@ -3,8 +3,8 @@ class StudentsController < ApplicationController
 
   # GET /students
   def index
-    @student = Student.all
-    render json: @student
+    @students = Student.includes(:addresses, :contacts)
+    render json: @students
   end
 
   # GET /students/1
@@ -25,7 +25,7 @@ class StudentsController < ApplicationController
 
   # PATCH/PUT /students/1
   def update
-    if @post.update(student_params)
+    if @student.update(student_params)
       render json: @student
     else
       render json: @student.errors, status: :unprocessable_entity
@@ -34,7 +34,7 @@ class StudentsController < ApplicationController
 
   # DELETE /students/1
   def destroy
-    @post.destroy
+    @student.destroy
   end
 
   private
@@ -44,6 +44,6 @@ class StudentsController < ApplicationController
   end
 
   def student_params
-    params.require(:post).permit(:first_name, :last_name, :country, :experiences)
+    params.require(:student).permit(:first_name, :last_name, :country, :experiences)
   end
 end

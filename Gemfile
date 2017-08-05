@@ -33,6 +33,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'airborne'
+  gem 'faker'
+  gem 'pry-rails'
 end
 
 group :development do
@@ -47,4 +49,7 @@ gem 'simplecov', :require => false, :group => :test
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+
+gem 'active_model_serializers', '~> 0.10.0'
 gem 'annotate'

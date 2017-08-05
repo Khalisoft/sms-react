@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :contact do
-    email 'test@example.com'
-    phone '9900998877'
+    email Faker::Internet.email
+    phone Faker::PhoneNumber.cell_phone
   end
 end

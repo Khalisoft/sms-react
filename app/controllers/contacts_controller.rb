@@ -25,7 +25,7 @@ class ContactsController < ApplicationController
 
   # PATCH/PUT /contacts/1
   def update
-    if @post.update(contact_params)
+    if @contact.update(contact_params)
       render json: @contact
     else
       render json: @contact.errors, status: :unprocessable_entity
@@ -34,7 +34,7 @@ class ContactsController < ApplicationController
 
   # DELETE /contacts/1
   def destroy
-    @post.destroy
+    @contact.destroy
   end
 
   private
@@ -44,6 +44,6 @@ class ContactsController < ApplicationController
   end
 
   def contact_params
-    params.require(:post).permit(:first_name, :last_name, :country, :experiences)
+    params.require(:contact).permit(:phone, :email, :student_id)
   end
 end

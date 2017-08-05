@@ -23,9 +23,10 @@ class AddressesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /addresses/1
+  # PATCH /addresses/1
+  # PUT /addresses/1
   def update
-    if @post.update(address_params)
+    if @address.update(address_params)
       render json: @address
     else
       render json: @address.errors, status: :unprocessable_entity
@@ -34,7 +35,7 @@ class AddressesController < ApplicationController
 
   # DELETE /addresses/1
   def destroy
-    @post.destroy
+    @address.destroy
   end
 
   private
@@ -44,6 +45,6 @@ class AddressesController < ApplicationController
   end
 
   def address_params
-    params.require(:post).permit(:first_name, :last_name, :country, :experiences)
+    params.require(:address).permit(:kind, :name, :student_id)
   end
 end
