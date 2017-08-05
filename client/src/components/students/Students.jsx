@@ -1,9 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import StudentTable from './StudentTable';
 
 function Students() {
   return (
-    <div>
-
+    <div className="student-wrapper">
+      <StudentTable />
     </div>
   );
 }
