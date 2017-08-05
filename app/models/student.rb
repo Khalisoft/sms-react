@@ -15,7 +15,7 @@ class Student < ApplicationRecord
   # validations
   validates :first_name, presence: true
   validates :country, presence: true
-  validates :expriences, presence: true
+  validates :experiences, presence: true
 
   # associations
   has_many :addresses
