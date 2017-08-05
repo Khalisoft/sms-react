@@ -74,6 +74,25 @@ RSpec.describe StudentsController, type: :controller do
   end
 
   context 'POST create' do
+    context '.validation' do
+      it 'should fail without student params' do
+        expect { post :create, format: :json }
+          .to raise_error(ActionController::ParameterMissing)
+      end
+
+      it 'should fail without valid params' do
+        post :create,
+          params: { student: { fake: 'params' } },
+          format: :json
+
+        expect_json(
+          first_name: ["can't be blank"],
+          country: ["can't be blank"],
+          experiences: ["can't be blank"]
+        )
+      end
+    end
+
     it 'should create new student' do
       params = {
         first_name: 'john',
@@ -97,6 +116,25 @@ RSpec.describe StudentsController, type: :controller do
         country: 'us',
         experiences: 'something, new'
       }
+    end
+
+    context '.Validation' do
+      it 'should fail without student params' do
+        expect { post :create, format: :json }
+          .to raise_error(ActionController::ParameterMissing)
+      end
+
+      it 'should fail without valid params' do
+        post :create,
+          params: { student: { fake: 'params' } },
+          format: :json
+
+        expect_json(
+          first_name: ["can't be blank"],
+          country: ["can't be blank"],
+          experiences: ["can't be blank"]
+        )
+      end
     end
 
     it 'should update student information' do

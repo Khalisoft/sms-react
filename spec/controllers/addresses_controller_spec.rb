@@ -48,7 +48,25 @@ RSpec.describe AddressesController, type: :controller do
   end
 
   context 'POST create' do
-    # also should not create without student
+    context '.Validation' do
+      it 'should fail without address params' do
+        expect { post :create, format: :json }
+          .to raise_error(ActionController::ParameterMissing)
+      end
+
+      it 'should fail without valid params' do
+        post :create,
+          params: { address: { fake: 'params' } },
+          format: :json
+
+        expect_json(
+          kind: ["can't be blank"],
+          name: ["can't be blank"],
+          student: ["must exist"]
+        )
+      end
+    end
+
     it 'should create new address' do
       params = {
         kind: 'work',
@@ -71,6 +89,25 @@ RSpec.describe AddressesController, type: :controller do
         kind: 'home',
         name: 'abc street, 10922'
       }
+    end
+
+    context '.Validation' do
+      it 'should fail without address params' do
+        expect { post :create, format: :json }
+          .to raise_error(ActionController::ParameterMissing)
+      end
+
+      it 'should fail without valid params' do
+        post :create,
+          params: { address: { fake: 'params' } },
+          format: :json
+
+        expect_json(
+          kind: ["can't be blank"],
+          name: ["can't be blank"],
+          student: ["must exist"]
+        )
+      end
     end
 
     it 'should update address information' do

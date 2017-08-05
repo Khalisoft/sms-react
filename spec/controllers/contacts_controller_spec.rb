@@ -48,7 +48,24 @@ RSpec.describe ContactsController, type: :controller do
   end
 
   context 'POST create' do
-    # also should not create without student
+    context '.Validation' do
+      it 'should fail without contact params' do
+        expect { post :create, format: :json }
+          .to raise_error(ActionController::ParameterMissing)
+      end
+
+      it 'should fail without valid params' do
+        post :create,
+          params: { contact: { fake: 'params' } },
+          format: :json
+
+        expect_json(
+          phone: ["can't be blank"],
+          email: ["can't be blank"],
+          student: ["must exist"]
+        )
+      end
+    end
     it 'should create new contact' do
       params = {
         phone: '9898989898',
@@ -71,6 +88,25 @@ RSpec.describe ContactsController, type: :controller do
         phone: '9898989898',
         email: 'test@example.com',
       }
+    end
+
+    context '.Validation' do
+      it 'should fail without contact params' do
+        expect { post :create, format: :json }
+          .to raise_error(ActionController::ParameterMissing)
+      end
+
+      it 'should fail without valid params' do
+        post :create,
+          params: { contact: { fake: 'params' } },
+          format: :json
+
+        expect_json(
+          phone: ["can't be blank"],
+          email: ["can't be blank"],
+          student: ["must exist"]
+        )
+      end
     end
 
     it 'should update contact information' do
