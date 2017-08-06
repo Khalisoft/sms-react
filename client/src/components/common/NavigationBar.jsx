@@ -8,7 +8,7 @@ function NavigationBar() {
       <Navbar.Header>
         <Navbar.Brand>
           <LinkContainer to="/">
-            <a>SMS</a>
+            <a>SIS</a>
           </LinkContainer>
         </Navbar.Brand>
         <Navbar.Toggle />
