@@ -45,3 +45,7 @@ to introduce some container components. This way you can get the data and the
 behavior props to the leaf components without burdening the unreleated
 components in the middle of the tree.
 
+# Connecting React to an external API using Redux (React + Redux)
+
+![async redux flow](./public/async-redux-flow.png?raw=true "redux flow")
+
